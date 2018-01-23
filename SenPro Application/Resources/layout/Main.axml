@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="Please input the patient's name."
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3" />
+    <EditText
+        android:inputType="textPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/patientName" />
+    <TextView
+        android:text="The patient's name can later be used to find the patient's measurements in SaMi."
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_marginBottom="30.0dp" />
+    <Button
+        android:text="Connect"
+        android:id="@+id/connect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0.0dp" />
+    <TextView
+        android:text="Attempt to connect to the SenPro Arduino platform."
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+    <Button
+        android:text="Start Test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/subscribe"
+        android:layout_marginTop="73.5dp"
+        android:layout_marginBottom="0.0dp"
+        android:enabled="false" />
+    <TextView
+        android:text="Start listening to the sensor readings, display them in a plot and send them to SaMi."
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+    <TextView
+        android:text="Welcome to SenPro."
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/info"
+        android:layout_marginTop="126.0dp"
+        android:gravity="center" />
+</LinearLayout>
