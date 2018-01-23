@@ -31,7 +31,7 @@ namespace SenPro_Application
 
         /// <summary>
         /// Sets up the required class variables. Take note of the write key: do not change this.
-        /// This is the key granted for this project by Miko.
+        /// This is the key granted for this project by Mikko.
         /// </summary>
         public SaMi(string patientName)
         {
@@ -43,7 +43,8 @@ namespace SenPro_Application
         }
 
         /// <summary>
-        /// This makes a MeasurementModel 
+        /// This makes a MeasurementModel based on the current timestamp, consisting of the sensor readings
+        /// done on that specific time.
         /// </summary>
         /// <param name="readingInput"></param>
         public void AddMeasurement(SenProReading readingInput)
