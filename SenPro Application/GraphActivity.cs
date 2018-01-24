@@ -24,7 +24,8 @@ using OxyPlot.Series;
 namespace SenPro_Application
 {
     /// <summary>
-    /// This is the main 
+    /// This is the activity class dealing with the graph screen, and as such,
+    /// the heart of the application.
     /// </summary>
     [Activity(Label = "SenPro Graph")]
     public class GraphActivity : Activity

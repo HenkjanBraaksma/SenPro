@@ -102,7 +102,11 @@ namespace SenPro_Application
 
             measurements.Add(m);
         }
-
+        /// <summary>
+        /// Checks if there are currently 60 or more measurements saved. With one per second,
+        /// that makes a minute.
+        /// </summary>
+        /// <returns></returns>
         public bool MeasurementMinuteCheck()
         {
             if (measurements.Count >= 60)
@@ -112,15 +116,10 @@ namespace SenPro_Application
             return false;
         }
 
-        public bool MeasurementAnyCheck()
-        {
-            if (measurements.Count >= 2)
-            {
-                return true;
-            }
-            return false;
-        }
-
+        /// <summary>
+        /// Takes the currently created package and attempts to upload it to SaMi.
+        /// </summary>
+        /// <returns></returns>
         public async Task SaveResults()
         {
             package.Measurements = measurements.ToArray();
@@ -134,6 +133,10 @@ namespace SenPro_Application
             package.Measurements = null;
         }
 
+        /// <summary>
+        /// Test function to confirm if SaMi connection can be established.
+        /// </summary>
+        /// <returns></returns>
         public async Task TestMeasurementSave()
         {
             List<MeasurementModel> testOutput = new List<MeasurementModel>();

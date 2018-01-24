@@ -14,6 +14,10 @@ using Plugin.BLE;
 
 namespace SenPro_Application
 {
+    /// <summary>
+    /// This activity automatically keeps trying to reconnect to the Arduino
+    /// after connection is lost.
+    /// </summary>
     [Activity(Label = "ReconnectActivity")]
     public class ReconnectActivity : Activity
     {
