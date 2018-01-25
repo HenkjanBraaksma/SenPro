@@ -1,6 +1,6 @@
 Before cloning the project from Github, make sure you have the following things:
 Visual Studio 15.3 or above
-Android SDKs for 7.0 (others optional, but I always built for 7.0)
+Android SDKs for 6.0 (others optional, but the Huawei Honor the lab gave me runs 6.0)
 .Net Core 2.0 (I think all computers have this already)
 
 - Go to the Start menu > Android SDK Tools > SDK Manager and install the Android SDKs for 7.0
