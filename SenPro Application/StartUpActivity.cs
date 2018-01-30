@@ -32,7 +32,6 @@ namespace SenPro_Application
             base.OnCreate(savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
             connectButton = FindViewById<Button>(Resource.Id.connect);
@@ -53,7 +52,10 @@ namespace SenPro_Application
         {
             base.OnDestroy();
             var adapter = CrossBluetoothLE.Current.Adapter;
-            adapter.DisconnectDeviceAsync(adapter.DiscoveredDevices[0]);
+            if(adapter.DiscoveredDevices.Count > 0)
+            {
+                adapter.DisconnectDeviceAsync(adapter.DiscoveredDevices[0]);
+            }
         }
 
         //Event Handlers
