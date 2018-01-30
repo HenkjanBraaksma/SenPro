@@ -17,8 +17,9 @@ namespace SenPro_Application
     [Activity(Label = "SenPro")]
     public class StartUpActivity : Activity
     {
-
+        string deviceGUID = "00000000-0000-0000-0000-fb680d98fa36";
         Button connectButton;
+        Button guidConnectButton;
         Button subscribeButton;
         EditText patientName;
         TextView infoText;
@@ -32,18 +33,43 @@ namespace SenPro_Application
             base.OnCreate(savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
             connectButton = FindViewById<Button>(Resource.Id.connect);
+            guidConnectButton = FindViewById<Button>(Resource.Id.guidconnect);
             subscribeButton = FindViewById<Button>(Resource.Id.subscribe);
             infoText = FindViewById<TextView>(Resource.Id.info);
             patientName = FindViewById<EditText>(Resource.Id.patientName);
 
             connectButton.Click += ConnectButton_Click;
             subscribeButton.Click += SubscribeButton_Click;
+            guidConnectButton.Click += GuidConnectButton_Click;
+
 
         }
+
+        private void GuidConnectButton_Click(object sender, EventArgs e)
+        {
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                infoText.Text = "Attempting connection.";
+            });
+            Guid device = Guid.Parse(deviceGUID);
+            var adapter = CrossBluetoothLE.Current.Adapter;
+            adapter.ConnectToKnownDeviceAsync(device);
+            adapter.DeviceConnected += (s, a) =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    connectButton.Enabled = false;
+                    guidConnectButton.Enabled = false;
+                    subscribeButton.Enabled = true;
+                    infoText.Text = "Connection Established.";
+                });
+                adapter.StopScanningForDevicesAsync();
+            };
+        }
+
         /// <summary>
         /// Makes sure the device properly disconnects to the Arduino before
         /// closing the app: Otherwise, the device remains connected while
@@ -53,7 +79,10 @@ namespace SenPro_Application
         {
             base.OnDestroy();
             var adapter = CrossBluetoothLE.Current.Adapter;
-            adapter.DisconnectDeviceAsync(adapter.DiscoveredDevices[0]);
+            if(adapter.DiscoveredDevices.Count > 0)
+            {
+                adapter.DisconnectDeviceAsync(adapter.DiscoveredDevices[0]);
+            }
         }
 
         //Event Handlers
@@ -87,6 +116,7 @@ namespace SenPro_Application
         {
             var ble = CrossBluetoothLE.Current;
             var adapter = CrossBluetoothLE.Current.Adapter;
+            Console.WriteLine(adapter.ScanMode);
             infoText.Text = "Looking for the SenPro device...";
             adapter.DeviceDiscovered += Adapter_DeviceDiscovered;
             await adapter.StartScanningForDevicesAsync();
@@ -113,8 +143,9 @@ namespace SenPro_Application
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
                         connectButton.Enabled = false;
+                        guidConnectButton.Enabled = false;
                         subscribeButton.Enabled = true;
-                        infoText.Text = "Connection established.";
+                        infoText.Text = "Connection Established.";
                     });
                     adapter.StopScanningForDevicesAsync();
                 };

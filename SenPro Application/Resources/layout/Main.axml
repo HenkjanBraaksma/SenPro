@@ -22,11 +22,16 @@
         android:id="@+id/textView4"
         android:layout_marginBottom="30.0dp" />
     <Button
-        android:text="Connect"
+        android:text="Connect via Scan"
         android:id="@+id/connect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0.0dp" />
+    <Button
+        android:text="Directly Connect to GUID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/guidconnect" />
     <TextView
         android:text="Attempt to connect to the SenPro Arduino platform."
         android:textAppearance="?android:attr/textAppearanceSmall"

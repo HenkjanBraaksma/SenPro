@@ -18,7 +18,7 @@ namespace SenPro_Application
     /// This activity, set up as the activity that starts when the user boots the app,
     /// checks for necessary permissions and requests them if they are not granted yet.
     /// </summary>
-    [Activity(Label = "Checking Permissions", MainLauncher = true)]
+    [Activity(Label = "Sensor Prototype App", MainLauncher = true)]
     public class PermissionActivity : Activity
     {
         TextView message;
