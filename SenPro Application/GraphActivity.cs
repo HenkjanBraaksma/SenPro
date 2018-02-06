@@ -27,7 +27,7 @@ namespace SenPro_Application
     /// This is the activity class dealing with the graph screen, and as such,
     /// the heart of the application.
     /// </summary>
-    [Activity(Label = "SenPro Graph")]
+    [Activity(Label = "SenPro Graph", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class GraphActivity : Activity
     {
         bool currentlyListening;
